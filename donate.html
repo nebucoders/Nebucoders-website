@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | NebuCoders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: #0B0C10;
+    color: #C5C6C7;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #1F2833;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #66FCF1;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #45A29E;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.logo .code {
+    color: #66FCF1;
+}
+
+.logo .constellation {
+    color: #45A29E;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #66FCF1;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #1F2833;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: #C5C6C7;
+    overflow: hidden;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #1F2833 0%, #0B0C10 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    animation: fade-in 2s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+
+.hero p {
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    animation: fade-in 2s ease-in-out 0.5s;
+}
+
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+.sections {
+    padding: 80px 20px;
+    text-align: center;
+    background: #1F2833;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.sections h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #66FCF1;
+}
+
+.sections p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #C5C6C7;
+}
+
+.cta {
+    display: block;
+    width: 250px;
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    color: #0B0C10;
+    border: 2px solid #66FCF1;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all 0.35s;
+    margin: 20px auto;
+    overflow: hidden;
+    background: #66FCF1;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    border-radius: 10px;
+    line-height: normal;
+}
+
+.cta span {
+    position: relative;
+    z-index: 2;
+}
+
+.cta:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.35s;
+}
+
+.cta:hover {
+    color: #0B0C10;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+}
+
+.cta:hover:after {
+    width: 100%;
+}
+
+.cta:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+}
+
+.donate-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+.donate-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #1F2833;
+}
+
+footer a {
+    color: #66FCF1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #45A29E;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="donate.html">Donate</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Support Our Community</h2>
+            <p>Your donations help us host more events, workshops, and provide resources for learning. By donating, you are supporting a community of passionate coders who are dedicated to learning, building, and growing together.</p>
+        </div>
+    </div>
+
+    <div class="sections">
+        <div class="donate-content">
+            <img src="https://images.ctfassets.net/cnu0m8re1exe/2o7XGm6ADyb79orCl3r6Bm/5291ed59d8dc3fb5cfa07dfeacce5ddc/Kids_Coding.png?fm=jpg&fl=progressive&w=660&h=433&fit=fill" alt="Donate Image">
+            <h2>With Your Contributions, We Can:</h2>
+            <ul class="content">
+                <li>Organize more coding workshops and competitions</li>
+                <li>Provide scholarships and resources for underrepresented groups</li>
+                <li>Develop and maintain open-source projects</li>
+                <li>Host community events and meetups</li>
+            </ul>
+            <p class="content">Every donation, big or small, makes a difference. Thank you for your support!</p>
+            <button class="cta">Donate Now</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>

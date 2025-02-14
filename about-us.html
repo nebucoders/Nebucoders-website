@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NebuCoders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #1F2833;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #66FCF1;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #45A29E;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #66FCF1;
+        }
+
+        .logo .constellation {
+            color: #45A29E;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #66FCF1;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1F2833;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .about-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: #1F2833;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+            animation: fade-in 1.5s ease-in-out;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #C5C6C7;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: #1F2833;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #66FCF1;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #C5C6C7;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: #0B0C10;
+            background-color: #66FCF1;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta:hover {
+            transform: scale(1.1);
+            background-color: #45A29E;
+        }
+        a {
+            color: #66FCF1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #45A29E;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1F2833;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#whatwedo">What We Do</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#join">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="about-section" id="vision">
+        <h2 class="section-title">Who We Are</h2>
+        <p class="content">NebuCoders is a community of passionate coders, innovators, and creators dedicated to building amazing projects and growing together. Whether you're a beginner or an expert, this is the place for you to learn, collaborate, and shine.</p>
+    </div>
+
+    <div class="about-section" id="whatwedo">
+        <h2 class="section-title">What We Do</h2>
+        <p class="content">We host coding workshops, competitions, and online/offline events to empower developers. Our projects range from web and app development to AI, cybersecurity, and open-source contributions.</p>
+    </div>
+
+    <div class="about-section" id="team">
+        <h2 class="section-title">The Founding Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="/adal.jpeg" alt="Team Member 1">
+                <h3>Adal Zuhair</h3>
+                <p></p>
+            </div>
+            <div class="team-member">
+                <img src="/haf.jpeg" alt="Team Member 2">
+                <h3>Mohammed Hafiz ullah</h3>
+                <p></p>
+            </div>
+            <div class="team-member">
+                <img src="path/to/member3.jpg" alt="Team Member 3">
+                <h3>Ilmanul Islam</h3>
+                <p></p>
+            </div>
+            <div class="team-member">
+                <img src="path/to/member4.jpg" alt="Team Member 4">
+                <h3>Tehjeeb Shahriar</h3>
+                <p></p>
+            </div>
+            <div class="team-member">
+                <img src="/tasrian.jpeg" alt="Team Member 4">
+                <h3>Tasrian Rahman Ahnaf</h3>
+                <p></p>
+            </div>
+            <!-- Add more team members as needed -->
+        </div>
+    </div>
+
+    <div class="about-section" id="join">
+        <h2 class="section-title">Join Us</h2>
+        <p class="content">Become part of our stellar community and start your coding journey today!</p>
+        <button class="cta">Join Now</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebuCoders | Coding Beyond Boundaries, Together</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+
+    
+   <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #1F2833;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #66FCF1;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #45A29E;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #66FCF1;
+        }
+
+        .logo .constellation {
+            color: #45A29E;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: #ffffff;
+            overflow: hidden;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #1F2833 0%, #0B0C10 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fade-in 2s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        .hero p {
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            animation: fade-in 2s ease-in-out 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .astronaut, .floating-image {
+                display: none;
+            }
+        }
+
+        .astronaut {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-image {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 150px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .astronaut, .floating-image {
+                display: none;
+            }
+        }
+
+        .sections {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1F2833;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sections h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .sections p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .cta {
+    display: block;
+    width: 250px;
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    color: #0B0C10;
+    border: 2px solid #66FCF1;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all 0.35s;
+    margin: 20px auto;
+    overflow: hidden;
+    background: linear-gradient(45deg, #66FCF1, #45A29E);
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    border-radius: 10px;
+    line-height: normal;
+}
+
+.cta span {
+    position: relative;
+    z-index: 2;
+}
+
+.cta:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.35s;
+}
+
+.cta:hover {
+    color: #0B0C10;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+}
+
+.cta:hover:after {
+    width: 100%;
+}
+
+.cta:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+}
+
+        .rocket {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 200px;
+            background: url('https://image.shutterstock.com/image-vector/rocket-icon-flat-style-260nw-1030730732.jpg') no-repeat center center;
+            background-size: contain;
+            animation: rocket-fly 5s infinite;
+        }
+
+        @keyframes rocket-fly {
+            0% { bottom: -100px; }
+            50% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+
+        .who-we-are {
+            padding: 100px 20px;
+            text-align: center;
+            background: #45A29E;
+            color: #0B0C10;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .who-we-are h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .who-we-are p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .live-data {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .live-data .data-item {
+            background: #1F2833;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .live-data .data-item h3 {
+            font-size: 2rem;
+            color: #66FCF1;
+            margin-bottom: 10px;
+        }
+
+        .live-data .data-item p {
+            font-size: 1.2rem;
+            color: #C5C6C7;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1F2833;
+        }
+
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #66FCF1;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1F2833;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .hero-cta {
+            display: block;
+            width: 300px;
+            height: 80px;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #0B0C10;
+            border: 2px solid #66FCF1;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all 0.35s;
+            margin: 20px auto;
+            overflow: hidden;
+            background: #66FCF1;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+            border-radius: 10px;
+            line-height: normal;
+        }
+
+        .hero-cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-cta:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.35s;
+        }
+
+        .hero-cta:hover {
+            color: #0B0C10;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+        }
+
+        .hero-cta:hover:after {
+            width: 100%;
+        }
+
+        .hero-cta:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+        }
+
+        .social-media {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1F2833;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-media h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .social-media p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #C5C6C7;
+        }
+
+        .social-media a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #66FCF1;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #45A29E;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #66FCF1;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #66FCF1;
+            border-radius: 5px;
+            background: #1F2833;
+            color: #C5C6C7;
+        }
+
+        .contact-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2rem;
+            color: #0B0C10;
+            background: #66FCF1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        a {
+            color: #66FCF1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #45A29E;
+        }
+
+        .contact-form button:hover {
+            background: #45A29E;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/events.html">Events</a></li>
+            <li><a href="/learn.html">Learn</a></li>
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/donate.html">Donate</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="vanta-bg">
+        <div class="hero-content">
+            <h2>Unlock Your Potential Through Code</h2>
+            <p>Join a community where creativity meets technology. NebuCoders is where beginners and experts come together to learn, build, and grow.</p>
+            <a href="#join" class="hero-cta"><span>Join the Community</span></a>
+        </div>
+        <img src="/astro.png" alt="Waving Astronaut" class="astronaut">
+        <img src="/logo1.png" alt="Floating Image" class="floating-image">
+    </div>
+
+    <div class="who-we-are scroll-animation">
+        <h2>Who We Are</h2>
+        <p>We are a community of passionate coders who believe in the power of collaboration, learning, and building cool projects together. Whether you're a beginner or an expert, you'll find a place here to grow and make an impact.</p>
+        <p>Join us for offline and online events, competitions, and workshops that will challenge and inspire you. Let's code beyond boundaries, together!</p>
+        <div class="live-data">
+            <div class="data-item">
+                <h3>Discord Members</h3>
+                <p id="discord-members">Loading...</p>
+            </div>
+            <div class="data-item">
+                <h3>Total Members</h3>
+                <p id="total-members">Loading...</p>
+            </div>
+            <div class="data-item">
+                <h3>GitHub Projects</h3>
+                <p id="github-projects">Loading...</p>
+            </div>
+            <div class="data-item">
+                <h3>Comps Won</h3>
+                <p id="competitions-won">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sections scroll-animation" id="projects">
+        <h2>Our GitHub Projects</h2>
+        <p>Explore and contribute to open-source projects built by our community.</p>
+        <a href="/projects.html" class="cta"><span>View Projects</span></a>
+        <div class="rocket"></div>
+    </div>
+
+    <div class="sections scroll-animation" id="events">
+        <h2>Workshops & Achievements</h2>
+        <p>Check out past workshops and upcoming events that help you level up your skills.</p>
+        <a href="/events.html" class="cta"><span>View Events</span></a>
+        <div class="rocket"></div>
+    </div>
+
+    <div class="sections scroll-animation" id="learn">
+        <h2>Learn to Code</h2>
+        <p>Explore programming languages, follow interactive projects, and find top learning resources.</p>
+        <a href="/learn.html" class="cta"><span>Start Learning</span></a>
+        <div class="rocket"></div>
+    </div>
+
+    <div class="sections scroll-animation" id="donate">
+        <h2>Support Our Community</h2>
+        <p>Your contributions help us host more events, workshops, and provide resources for learning.</p>
+        <a href="/donate.html" class="cta"><span>Donate Now</span></a>
+        <div class="rocket"></div>
+    </div>
+
+    <div class="sections scroll-animation" id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions or want to collaborate? Reach out to us!</p>
+        <div class="contact-form">
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="rocket"></div>
+    </div>
+
+    <div class="social-media scroll-animation" id="social-media">
+        <h2>Follow Us on Social Media</h2>
+        <p>Stay connected and follow us on our social media platforms for the latest updates and events.</p>
+        <a href="https://twitter.com/nebucoders" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a href="https://github.com/nebucoders" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="https://discord.gg/2Gm7En2dxj" target="_blank"><i class="fa fa-discord"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="https://instagram.com/nebucoders" target="_blank"><i class="fa fa-instagram"></i></a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="./privacy-policy.html">Privacy Policy</a> | <a href="./terms-of-service.html">Terms of Service</a></p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("UkgOymhquPLeoZEDB");
+        })();
+
+        VANTA.NET({
+            el: "#vanta-bg",
+            color: 0x66FCF1,
+            backgroundColor: 0x0B0C10,
+            points: 15.00,
+            maxDistance: 22.00,
+            spacing: 18.00,
+            showDots: false
+        });
+
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".scroll-animation").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight * 0.75) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_s4jmf94', 'template_4ff17da', this)
+                .then(function() {
+                    alert("Message sent successfully!");
+                }, function(error) {
+                    alert("Failed to send message: " + error);
+                });
+        });
+
+        // Fetch live data
+        async function fetchLiveData() {
+            try {
+                const discordResponse = await fetch('https://discord.com/api/guilds/YOUR_GUILD_ID/widget.json');
+                const discordData = await discordResponse.json();
+                document.getElementById('discord-members').textContent = discordData.presence_count;
+
+                const totalMembersResponse = await fetch('/api/total-members');
+                const totalMembersData = await totalMembersResponse.json();
+                document.getElementById('total-members').textContent = totalMembersData.count;
+
+                const githubResponse = await fetch('https://api.github.com/orgs/YOUR_ORG/repos');
+                const githubData = await githubResponse.json();
+                document.getElementById('github-projects').textContent = githubData.length;
+
+                const competitionsResponse = await fetch('/api/competitions-won');
+                const competitionsData = await competitionsResponse.json();
+                document.getElementById('competitions-won').textContent = competitionsData.count;
+            } catch (error) {
+                console.error('Error fetching live data:', error);
+            }
+        }
+
+        fetchLiveData();
+
+        // Fake data for demonstration
+        const fakeData = {
+            discordMembers: 50,
+            totalMembers: 150,
+            githubProjects: 2,
+            competitionsWon: 1
+        };
+
+        // Function to animate numbers
+        function animateNumber(element, start, end, duration) {
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const progress = currentTime - startTime;
+                const currentNumber = Math.min(Math.floor(progress / duration * (end - start) + start), end);
+                element.textContent = currentNumber;
+                if (progress < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Apply fake data and animate
+        document.addEventListener("DOMContentLoaded", () => {
+            animateNumber(document.getElementById('discord-members'), 0, fakeData.discordMembers, 2000);
+            animateNumber(document.getElementById('total-members'), 0, fakeData.totalMembers, 2000);
+            animateNumber(document.getElementById('github-projects'), 0, fakeData.githubProjects, 2000);
+            animateNumber(document.getElementById('competitions-won'), 0, fakeData.competitionsWon, 2000);
+        });
+    </script>
+</body>
+</html>

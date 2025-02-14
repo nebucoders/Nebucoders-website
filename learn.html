@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebuCoders | Learning Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0a0620;
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #16213e;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #93a6ff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #ff8c00;
+        }
+
+        .logo .constellation {
+            color: #93a6ff;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: #ffffff;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fade-in 2s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero p {
+            margin-bottom: 40px;
+        }
+
+        .sections {
+            padding: 80px 20px;
+            text-align: center;
+            background: #16213e;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sections h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .sections p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #93a6ff;
+        }
+
+        .cta {
+            display: block;
+            width: 250px;
+            height: 60px;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #fff;
+            border: 2px solid #ff8c00;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all 0.35s;
+            margin: 20px auto;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff8c00, #ff3b3b);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+            border-radius: 10px;
+            line-height: normal;
+        }
+
+        .cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.35s;
+        }
+
+        .cta:hover {
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.7);
+        }
+
+        .cta:hover:after {
+            width: 100%;
+        }
+
+        .cta:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+        }
+
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .resource-item {
+            background: #1a1a2e;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .resource-item:hover {
+            transform: scale(1.05);
+        }
+
+        .resource-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .resource-item p {
+            font-size: 1rem;
+            color: #93a6ff;
+        }
+
+        .resource-item a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ff8c00;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .resource-item a:hover {
+            color: #ffd700;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#resources">Programming Languages</a></li>
+            <li><a href="#interactive-projects">Interactive Projects</a></li>
+            <li><a href="#top-resources">Top Learning Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Learning Hub</h2>
+            <p>Explore programming languages, follow interactive projects, and find top learning resources.</p>
+        </div>
+    </div>
+
+    <div class="sections" id="resources">
+        <h2>Programming Languages</h2>
+        <div class="resource-list">
+            <div class="resource-item">
+                <h3>Python</h3>
+                <p>Learn Python, a versatile and beginner-friendly programming language.</p>
+                <a href="https://www.python.org/" target="_blank">Learn More</a>
+            </div>
+            <div class="resource-item">
+                <h3>JavaScript</h3>
+                <p>Master JavaScript, the language of the web, and build interactive websites.</p>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">Learn More</a>
+            </div>
+            <div class="resource-item">
+                <h3>Java</h3>
+                <p>Get started with Java, a powerful language used in many enterprise applications.</p>
+                <a href="https://www.oracle.com/java/" target="_blank">Learn More</a>
+            </div>
+            <!-- Add more programming language items as needed -->
+        </div>
+    </div>
+
+    <div class="sections" id="interactive-projects">
+        <h2>Interactive Projects</h2>
+        <div class="resource-list">
+            <div class="resource-item">
+                <h3>Project One</h3>
+                <p>Build a simple web application using HTML, CSS, and JavaScript.</p>
+                <a href="#">Start Project</a>
+            </div>
+            <div class="resource-item">
+                <h3>Project Two</h3>
+                <p>Create a Python script to automate a common task.</p>
+                <a href="#">Start Project</a>
+            </div>
+            <div class="resource-item">
+                <h3>Project Three</h3>
+                <p>Develop a Java application to manage a small library system.</p>
+                <a href="#">Start Project</a>
+            </div>
+            <!-- Add more interactive project items as needed -->
+        </div>
+    </div>
+
+    <div class="sections" id="top-resources">
+        <h2>Top Learning Resources</h2>
+        <div class="resource-list">
+            <div class="resource-item">
+                <h3>Codecademy</h3>
+                <p>Interactive coding lessons and projects for various programming languages.</p>
+                <a href="https://www.codecademy.com/" target="_blank">Visit Codecademy</a>
+            </div>
+            <div class="resource-item">
+                <h3>freeCodeCamp</h3>
+                <p>Learn to code for free with interactive lessons and real-world projects.</p>
+                <a href="https://www.freecodecamp.org/" target="_blank">Visit freeCodeCamp</a>
+            </div>
+            <div class="resource-item">
+                <h3>Coursera</h3>
+                <p>Online courses from top universities and companies to learn new skills.</p>
+                <a href="https://www.coursera.org/" target="_blank">Visit Coursera</a>
+            </div>
+            <!-- Add more learning resource items as needed -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".scroll-animation").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight * 0.75) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
+</body>
+</html>

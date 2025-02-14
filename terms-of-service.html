@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | NebuCoders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #1F2833;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #66FCF1;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #45A29E;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #66FCF1;
+        }
+
+        .logo .constellation {
+            color: #45A29E;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #66FCF1;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1F2833;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .content {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #C5C6C7;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #45A29E;
+        }
+
+
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1F2833;
+        }
+
+        footer a {
+            color: #66FCF1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #45A29E;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="donate.html">Donate</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2>Terms of Service</h2>
+        <p>Welcome to NebuCoders. By accessing or using our website, you agree to comply with and be bound by the following terms and conditions.</p>
+        
+        <h3>Use of Our Website</h3>
+        <p>You agree to use our website only for lawful purposes and in a way that does not infringe the rights of others or restrict or inhibit their use and enjoyment of the website.</p>
+
+        <h3>Intellectual Property</h3>
+        <p>All content on this website, including text, graphics, logos, and images, is the property of NebuCoders or its content suppliers and is protected by copyright laws.</p>
+
+        <h3>Links to Other Websites</h3>
+        <p>Our website may contain links to third-party websites. We have no control over the content of these websites and are not responsible for their content or accuracy.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>NebuCoders will not be liable for any damages arising from the use of this website or the information contained on it.</p>
+
+        <h3>Changes to These Terms</h3>
+        <p>We may update these Terms of Service from time to time. We will notify you of any changes by posting the new Terms of Service on our website.</p>
+
+        <h3>Contact Us</h3>
+        <p>If you have any questions about these Terms of Service, please contact us at <a href="mailto:nebucoders.info@gmail.com">info@nebucoders.org</a>.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebuCoders | Events & Workshops</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #1F2833;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #66FCF1;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #45A29E;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #66FCF1;
+        }
+
+        .logo .constellation {
+            color: #45A29E;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: #C5C6C7;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fade-in 2s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero p {
+            margin-bottom: 40px;
+        }
+
+        .sections {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1F2833;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sections h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .sections p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #C5C6C7;
+        }
+
+        .cta {
+            display: block;
+            width: 250px;
+            height: 60px;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #0B0C10;
+            border: 2px solid #66FCF1;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all 0.35s;
+            margin: 20px auto;
+            overflow: hidden;
+            background: #66FCF1;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+            border-radius: 10px;
+            line-height: normal;
+        }
+
+        .cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.35s;
+        }
+
+        .cta:hover {
+            color: #0B0C10;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+        }
+
+        .cta:hover:after {
+            width: 100%;
+        }
+
+        .cta:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+        }
+
+        .event-schedule {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .event-schedule h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .event-schedule ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-schedule ul li {
+            background: #1F2833;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-schedule ul li h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #66FCF1;
+        }
+
+        .event-schedule ul li p {
+            font-size: 1rem;
+            color: #C5C6C7;
+        }
+
+        .event-highlights {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .event-highlights h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .event-highlights .highlight-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .event-highlights .highlight-item {
+            background: #1F2833;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .event-highlights .highlight-item:hover {
+            transform: scale(1.05);
+        }
+
+        .event-highlights .highlight-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #66FCF1;
+        }
+
+        .event-highlights .highlight-item p {
+            font-size: 1rem;
+            color: #C5C6C7;
+        }
+
+        .event-highlights .highlight-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1F2833;
+        }
+
+        a {
+            color: #66FCF1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #45A29E;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1F2833;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+
+            .hamburger div {
+                width: 25px;
+                height: 3px;
+                background-color: #66FCF1;
+                margin: 4px;
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#upcoming-events">Upcoming Events</a></li>
+            <li><a href="#event-schedule">Event Schedule</a></li>
+            <li><a href="#event-highlights">Event Highlights</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Events & Workshops</h2>
+            <p>Check out our upcoming events, past workshops, and achievements.</p>
+        </div>
+    </div>
+
+    <div class="sections" id="upcoming-events">
+        <h2>Upcoming Events</h2>
+        <div class="event-list">
+            <div class="event-item">
+                <h3>Event One</h3>
+                <p>A brief description of Event One. This event focuses on...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-item">
+                <h3>Event Two</h3>
+                <p>A brief description of Event Two. This event focuses on...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-item">
+                <h3>Event Three</h3>
+                <p>A brief description of Event Three. This event focuses on...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <!-- Add more event items as needed -->
+        </div>
+    </div>
+
+    <div class="sections" id="event-schedule">
+        <h2>Event Schedule</h2>
+        <div class="event-schedule">
+            <h3>Upcoming Schedule</h3>
+            <ul>
+                <li>
+                    <h4>Workshop on Web Development</h4>
+                    <p>Date: 25th November 2025</p>
+                    <p>Time: 10:00 AM - 4:00 PM</p>
+                    <p>Location: Online</p>
+                </li>
+                <li>
+                    <h4>AI and Machine Learning Bootcamp</h4>
+                    <p>Date: 10th December 2025</p>
+                    <p>Time: 9:00 AM - 5:00 PM</p>
+                    <p>Location: Tech Hub, City Center</p>
+                </li>
+                <li>
+                    <h4>Hackathon: Code for Good</h4>
+                    <p>Date: 15th January 2026</p>
+                    <p>Time: 8:00 AM - 8:00 PM</p>
+                    <p>Location: Innovation Lab, Downtown</p>
+                </li>
+                <!-- Add more schedule items as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="sections" id="event-highlights">
+        <h2>Event Highlights</h2>
+        <div class="event-highlights">
+            <h3>Recent Highlights</h3>
+            <div class="highlight-list">
+                <div class="highlight-item" onclick="showDetails('python-workshop')">
+                    <img src="path/to/python-workshop.jpg" alt="Python Workshop">
+                    <h4>Python Workshop</h4>
+                    <p>Our recent Python workshop was a huge success with over 100 participants. We covered basics to advanced topics, and participants built their own projects.</p>
+                </div>
+                <div class="highlight-item" onclick="showDetails('javascript-bootcamp')">
+                    <img src="path/to/javascript-bootcamp.jpg" alt="JavaScript Bootcamp">
+                    <h4>JavaScript Bootcamp</h4>
+                    <p>The JavaScript Bootcamp was an intensive 3-day event where attendees learned about modern JavaScript frameworks and built interactive web applications.</p>
+                </div>
+                <div class="highlight-item" onclick="showDetails('annual-hackathon')">
+                    <img src="path/to/annual-hackathon.jpg" alt="Annual Hackathon">
+                    <h4>Annual Hackathon</h4>
+                    <p>The Annual Hackathon saw teams competing to solve real-world problems. The winning team developed an innovative solution for environmental monitoring.</p>
+                </div>
+                <!-- Add more highlight items as needed -->
+            </div>
+        </div>
+    </div>
+
+    <div class="sections" id="achievements">
+        <h2>Achievements</h2>
+        <div class="event-list">
+            <div class="event-item">
+                <h3>Achievement One</h3>
+                <p>A brief description of Achievement One. This achievement was...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-item">
+                <h3>Achievement Two</h3>
+                <p>A brief description of Achievement Two. This achievement was...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-item">
+                <h3>Achievement Three</h3>
+                <p>A brief description of Achievement Three. This achievement was...</p>
+                <a href="#">Learn More</a>
+            </div>
+            <!-- Add more achievement items as needed -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".scroll-animation").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight * 0.75) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+
+        function showDetails(eventId) {
+            // Implement the logic to show more details and images for the selected event
+            alert("Show details for " + eventId);
+        }
+    </script>
+</body>
+</html>

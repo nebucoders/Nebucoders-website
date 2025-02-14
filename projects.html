@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebuCoders | Our GitHub Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/nebco.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        a {
+            color: #66FCF1;
+            text-decoration: none;
+            transition: color 0.3s;}
+            a:hover {
+            color: #45A29E;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #1F2833;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #66FCF1;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #45A29E;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .logo .code {
+            color: #66FCF1;
+        }
+
+        .logo .constellation {
+            color: #45A29E;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: #C5C6C7;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fade-in 2s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero p {
+            margin-bottom: 40px;
+        }
+
+        .sections {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1F2833;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sections h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .sections p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #C5C6C7;
+        }
+
+        .cta {
+            display: block;
+            width: 250px;
+            height: 60px;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #0B0C10;
+            border: 2px solid #66FCF1;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all 0.35s;
+            margin: 20px auto;
+            overflow: hidden;
+            background: #66FCF1;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+            border-radius: 10px;
+            line-height: normal;
+        }
+
+        .cta span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.35s;
+        }
+
+        .cta:hover {
+            color: #0B0C10;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.7);
+        }
+
+        .cta:hover:after {
+            width: 100%;
+        }
+
+        .cta:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.5);
+        }
+
+        .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-item {
+            background: #1F2833;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+        }
+
+        .project-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #66FCF1;
+        }
+
+        .project-item p {
+            font-size: 1rem;
+            color: #C5C6C7;
+        }
+
+        .project-item a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #45A29E;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .project-item a:hover {
+            color: #66FCF1;
+        }
+
+        .project-status {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #66FCF1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stats .stat-item {
+            background: #1F2833;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .stats .stat-item h3 {
+            font-size: 2rem;
+            color: #66FCF1;
+            margin-bottom: 10px;
+        }
+
+        .stats .stat-item p {
+            font-size: 1.2rem;
+            color: #C5C6C7;
+        }
+
+        .contribution-guidelines {
+            padding: 40px 20px;
+            background: #1F2833;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .contribution-guidelines h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #66FCF1;
+        }
+
+        .contribution-guidelines p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #C5C6C7;
+        }
+
+        .contribution-guidelines ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contribution-guidelines ul li {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #C5C6C7;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #1F2833;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+            }
+
+            .hamburger div {
+                width: 25px;
+                height: 3px;
+                background-color: #66FCF1;
+                margin: 4px;
+                transition: all 0.3s ease;
+            }
+        }
+
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1F2833;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span class="code">Nebu</span> <span class="constellation">Coders</span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Our GitHub Projects</h2>
+            <p>Explore and contribute to open-source projects built by our community.</p>
+        </div>
+    </div>
+
+    <div class="sections" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-list">
+            <div class="project-item">
+                <h3>Conference Room Booking system</h3>
+                <p>A scheduling platform built for Presidency International School, allowing users to book, edit, and manage room reservations. Users can log in, manage their bookings, and delete their accounts, while the admin has full control over all records, including adding or removing users. The system automatically deletes expired bookings every minute.                </p>
+                <a href="https://github.com/nebucoders/Conference-Booking-System" target="_blank">View on GitHub</a>
+                <p class="project-status">Status: Complete</p>
+            </div>
+            <div class="project-item">
+                <h3>nebucoders discord bot</h3>
+                <p>This is the official repository for NebuCoders Discord Bot
+                </p>
+                <a href="https://github.com/nebucoders/TheCodeNinjas-dcbot" target="_blank">View on GitHub</a>
+                <p class="project-status">Status: In Progress</p>
+            </div>
+            <div class="project-item">
+                <h3>nebucders website</h3>
+                <p>Website for nebucoders</p>
+                <a href="https://github.com/your-repo/project-three" target="_blank">View on GitHub</a>
+                <p class="project-status">Status: Complete</p>
+            </div>
+            <!-- Add more project items as needed -->
+        </div>
+    </div>
+
+    <div class="sections" id="stats">
+        <h2>Project Statistics</h2>
+        <div class="stats">
+            <div class="stat-item">
+                <h3>2</h3>
+                <p>Projects</p>
+            </div>
+            <div class="stat-item">
+                <h3>20</h3>
+                <p>Contributors</p>
+            </div>
+            <div class="stat-item">
+                <h3>100</h3>
+                <p>Commits</p>
+            </div>
+            <div class="stat-item">
+                <h3>50%</h3>
+                <p>Completion</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sections" id="contribution-guidelines">
+        <h2>How to Contribute</h2>
+        <p>We welcome contributions from everyone. Here are some ways you can contribute:</p>
+        <ul>
+            <li>Fork the repository and create a new branch for your feature or bug fix.</li>
+            <li>Write clear, concise commit messages and include relevant documentation.</li>
+            <li>Submit a pull request with a detailed description of your changes.</li>
+            <li>Review and test other pull requests to help maintain code quality.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NebuCoders. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".scroll-animation").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight * 0.75) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector("nav ul");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
+</body>
+</html>
